@@ -1,6 +1,6 @@
-import ProductData from './ProductData.js';
+//import ProductData from './ProductData.js';
 import { setLocalStorage } from './utils.mjs';
-const dataSource = new ProductData('tents');
+//const dataSource = new ProductData('tents');
 
 function productDetailsTemplate(product) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
