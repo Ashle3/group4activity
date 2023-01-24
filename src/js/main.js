@@ -1,8 +1,9 @@
-import { Linter } from 'eslint';
-import ProductData from './ProductData.js';
+import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
 
-const productList = new ProductData("tents");
-const list = new ProductList(category, dataSource, listElement); // change params later
+const dataSource = new ProductData("tents");
+const element = document.querySelector(".product-list");
+const list = new ProductList("tents", dataSource, element); // change params later
 
 
+list.init();

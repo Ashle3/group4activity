@@ -23,12 +23,16 @@ export default class ProductList {
         const list = await this.dataSource.getData();
 
         // render the list
+        this.renderList(list);
         /*
         findElementById......
         insert template
         */
-
     };
+    renderList(list){
+      const pain = list.map(productCardTemplate);
+      this.listElement.insertAdjacentHTML('afterbegin', pain.join(''));
+    }
 
 }
 
