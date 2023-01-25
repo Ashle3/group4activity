@@ -9,9 +9,6 @@ const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-console.log(dataSource.findProductById(productId));
-console.log(productId);
-
 // function addProductToCart(product) {
 //   setLocalStorage("so-cart", product);
 // }
