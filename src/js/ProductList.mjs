@@ -21,18 +21,30 @@ export default class ProductList {
         this.listElement = listElement;        
     };
     async init(){
-        const list = await this.dataSource.getData();
-
-        // render the list
-        this.renderList(list);
-        /*
-        findElementById......
-        insert template
-        */
+      const list = await this.dataSource.getData();
+      // render the list
+      this.filterList(list);
+      this.renderList(list);
+      /*
+      findElementById......
+      insert template
+      */
     };
+      
+    // this is definitely temporary, do not keep this.
+    filterList(list){
+      var temp = list[2];
+      list[2] = list[3];
+      list[3] = list[5];
+      list.pop();
+      list.pop();
+      console.log(list);
+    }
+
     renderList(list){
       /*const pain = list.map(productCardTemplate);
       this.listElement.insertAdjacentHTML('afterbegin', pain.join(''));*/
+      console.log(this);
       renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 
