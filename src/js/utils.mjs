@@ -35,6 +35,37 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
+export function renderWithTemplate(
+  template,
+  parentElement,
+  data,
+  position = "afterbegin"
+) {
+
+  parentElement.insertAdjacentHTML(position, template);
+  if(callback) {
+      callback(data);
+  }
+
+}
+
+export async function loadTemplate(path){
+  let response = await fetch(path);
+  if (response.ok) { // if HTTP-status is 200-299
+    // get the response body (the method explained below)
+    let json = await response.json(); //processing JSON?
+  } else {
+    alert("HTTP-Error: " + response.status);
+  }
+}
+
+export function loadHeaderFooter(loadTemplate){
+  let header = document.getElementById("main-header");
+  let footer = document.getElementById("main-footer");
+  renderWithTemplate(loadTemplate, header);
+  renderWithTemplate(loadTemplate, footer);
+}
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
