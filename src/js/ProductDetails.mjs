@@ -1,6 +1,8 @@
-//import ProductData from './ProductData.js';
 import { setLocalStorage } from './utils.mjs';
-//const dataSource = new ProductData('tents');
+import { loadHeaderFooter } from './utils.mjs';
+
+//the code for loadHeaderFooter
+loadHeaderFooter();
 
 function productDetailsTemplate(product) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
