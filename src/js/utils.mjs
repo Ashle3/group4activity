@@ -49,21 +49,20 @@ export function renderWithTemplate(
 
 }
 
-export async function loadTemplate(path){
-  let response = await fetch(path);
-  if (response.ok) { // if HTTP-status is 200-299
-    // get the response body (the method explained below)
-    let json = await response.json(); //processing JSON?
-  } else {
-    alert("HTTP-Error: " + response.status);
-  }
+async function loadTemplate(path){
+  const response = await fetch(path);
+  const template = await response.text();
+  return template;
 }
 
-export function loadHeaderFooter(loadTemplate){
-  let header = document.getElementById("main-header");
-  let footer = document.getElementById("main-footer");
-  renderWithTemplate(loadTemplate, header);
-  renderWithTemplate(loadTemplate, footer);
+export async function loadHeaderFooter(){
+  const headerTemp = await loadTemplate("../partials/header.html");
+  const headerElement = document.querySelector("#main-header");
+  const footerTemp = await loadTemplate("../partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemp, headerElement);
+  renderWithTemplate(footerTemp, footerElement);
 }
 
 // set a listener for both touchend and click
