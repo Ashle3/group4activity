@@ -1,3 +1,5 @@
+
+
 import { renderListWithTemplate } from "./utils.mjs";
 
 
@@ -21,7 +23,7 @@ export default class ProductList {
         this.listElement = listElement;        
     };
     async init(){
-      const list = await this.dataSource.getData();
+      const list = await this.dataSource.getData(this.category);
       // render the list
       this.filterList(list);
       this.renderList(list);
