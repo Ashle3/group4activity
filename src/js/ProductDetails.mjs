@@ -1,4 +1,4 @@
-import { setLocalStorage } from './utils.mjs';
+import { setLocalStorage, getLocalStorage } from './utils.mjs';
 
 function productDetailsTemplate(product) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -31,9 +31,18 @@ export default class ProductDetails{
         document
             .getElementById("addToCart")
             .addEventListener("click", this.addToCart.bind(this));
+        document
+            .getElementById("addToCart")
+            .addEventListener("click", function(){ani()}, false);
     }
     addToCart(){
-        setLocalStorage("so-cart", product);
+        let cartArray = getLocalStorage("so-cart");
+
+        if(!cartArray) {{
+            cartArray = [];
+        }}
+        cartArray.push(this.product);
+        setLocalStorage("so-cart", cartArray);
     }
     renderProductDetails(selector){
         const element = document.querySelector(selector);
@@ -42,6 +51,14 @@ export default class ProductDetails{
             productDetailsTemplate(this.product)
         );
     }
-
 }
 
+function ani() {
+    // find the element to animate
+    let icon = document.getElementById("backpack-icon");
+    // add the spinning property, should activate
+    icon.setAttribute("class", "cartspin");
+    // clone, delete, replace element to restart animation
+    var newone = icon;
+    icon.parentNode.replaceChild(newone, icon);
+}

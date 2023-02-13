@@ -102,7 +102,7 @@ button {
   position: relative;
   text-align: center;
 }
-.cart:hover{
+.cartspin{
   animation: rotate-right 500ms linear;
 }
 .cart svg {
@@ -122,7 +122,6 @@ button {
 .cart:hover svg {
   fill: gray;
 }
-
 /* End cart icon styles */
 
 /* product grid styles */

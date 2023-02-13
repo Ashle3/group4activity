@@ -7,6 +7,14 @@ loadHeaderFooter();
 const cart = new ShoppingCart("so-cart", ".product-list");
 cart.renderCartContents();
 
+function spinBackpack() {
+
+    let spin = document.querySelector("svg");
+
+    spin.setAttribute("animation", "rotate-right")
+
+}
+
 // function renderCartContents() {
 //   const cartItems = [getLocalStorage("so-cart")];
 //   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
