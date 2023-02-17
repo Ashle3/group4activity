@@ -14,7 +14,7 @@ function cardItemTemplate(product) {
   <p class="cart-card__color">${product.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${product.FinalPrice}</p>
-</li>`;
+  </li>`;
   return newItem;
 }     
 
@@ -26,7 +26,9 @@ export default class ShoppingCart {
   }
   async init() {
     const list = getLocalStorage(this.key);
-    this.calculateListTotal(list);
+    if (list) {
+      this.calculateListTotal(list);
+    }
     this.renderCartContents(list);
   }
   calculateListTotal(list) {
@@ -38,6 +40,7 @@ export default class ShoppingCart {
     if (cartItems) {
       const htmlItems = cartItems.map((item) => cardItemTemplate(item));
       document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
+      document.querySelector(".list-total").innerText += ` $${this.total}`;
     } else {
       document.querySelector(this.parentSelector).innerHTML = "<p>Cart is empty!</p>"
     }
