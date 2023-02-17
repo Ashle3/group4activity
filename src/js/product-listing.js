@@ -1,4 +1,4 @@
-import ProductData from './ProductData.mjs';
+import ExternalServices from './ExternalServices.mjs';
 import ProductList from './ProductList.mjs';
 import { loadHeaderFooter, getParam } from './utils.mjs';
 
@@ -6,7 +6,7 @@ import { loadHeaderFooter, getParam } from './utils.mjs';
 loadHeaderFooter();
 
 const category = getParam("category");
-const dataSource = new ProductData();//Find out what to pass here
+const dataSource = new ExternalServices();//Find out what to pass here
 const element = document.querySelector(".product-list");
 const list = new ProductList(category, dataSource, element); // change params later
 
