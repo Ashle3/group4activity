@@ -26,23 +26,21 @@ export default class ShoppingCart {
   }
   async init() {
     const list = getLocalStorage(this.key);
+    // display nothing if the cart is empty
     if (list) {
       this.calculateListTotal(list);
+      this.renderCartContents(list);
+    } else {
+      document.querySelector(this.parentSelector).innerHTML = "<p>Cart is empty!</p>"
     }
-    this.renderCartContents(list);
   }
   calculateListTotal(list) {
     const amounts = list.map((item) => item.FinalPrice);
     this.total = amounts.reduce((sum, item) => sum + item);
   }
-  renderCartContents(){
-    const cartItems = getLocalStorage(this.key);
-    if (cartItems) {
-      const htmlItems = cartItems.map((item) => cardItemTemplate(item));
+  renderCartContents(list){
+      const htmlItems = list.map((item) => cardItemTemplate(item));
       document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
       document.querySelector(".list-total").innerText += ` $${this.total}`;
-    } else {
-      document.querySelector(this.parentSelector).innerHTML = "<p>Cart is empty!</p>"
-    }
   }
 }

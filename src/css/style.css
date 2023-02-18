@@ -103,7 +103,7 @@ button {
   text-align: center;
 }
 .cartspin{
-  animation: rotate-right 500ms linear;
+  animation: rotate-right 1200ms linear;
 }
 .cart svg {
   width: 25px;
@@ -116,7 +116,7 @@ button {
   }
   to
   {
-    transform: rotateZ(360deg);
+    transform: rotateZ(720deg);
   }
 }
 .cart:hover svg {
@@ -165,6 +165,7 @@ button {
   margin: auto;
 }
 .products {
+  max-width: 30em;
   padding: 0.5em;
 }
 .product-list {
@@ -204,6 +205,10 @@ button {
 /* checkout styles */
 .checkout-form {
   padding: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+
 }
 .checkout-form label {
   display: block;
@@ -225,6 +230,10 @@ button {
 .checkout-summary input {
   width: 25%;
   font-size: 1em;
+}
+.checkoutSubmit {
+  padding: 0.5em 2em;
+  margin: 0.3em auto;
 }
 
 /* Styles for product lists */

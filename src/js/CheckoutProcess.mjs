@@ -15,11 +15,11 @@ function formDataToJSON(formElement) {
 
 function packageItems(items) {
   const simplifiedItems = items.map((item) => {
-    console.log(item);
+    // console.log(item);
     return {
       id: item.Id,
-      price: item.FinalPrice,
       name: item.Name,
+      price: item.FinalPrice,
       quantity: 1,
     };
   });
@@ -39,6 +39,7 @@ export default class CheckoutProcess {
   init() {
     this.list = getLocalStorage(this.key);
     this.calculateItemSummary();
+    this.calculateOrdertotal();
   }
   calculateItemSummary() {
     const summaryElement = document.querySelector(
@@ -50,7 +51,7 @@ export default class CheckoutProcess {
     itemNumElement.innerText = this.list.length;
     // calculate the total of all the items in the cart
     const amounts = this.list.map((item) => item.FinalPrice);
-    this.itemTotal = amounts.reduce((sum, item) => sum + item);
+    this.itemTotal = amounts.reduce((accumulator, currentValue) => accumulator + currentValue);
     summaryElement.innerText = "$" + this.itemTotal;
   }
   calculateOrdertotal() {
@@ -73,6 +74,7 @@ export default class CheckoutProcess {
     tax.innerText = "$" + this.tax;
     orderTotal.innerText = "$" + this.orderTotal;
   }
+
   async checkout() {
     const formElement = document.forms["checkout"];
 
@@ -89,6 +91,7 @@ export default class CheckoutProcess {
       console.log(res);
     } catch (err) {
       console.log(err);
+      console.log(err.message);
     }
   }
 }

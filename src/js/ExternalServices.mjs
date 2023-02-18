@@ -3,7 +3,7 @@ function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Bad Response");
+    throw new Error();
   }
 }
 
@@ -30,6 +30,8 @@ export default class ExternalServices {
       },
       body: JSON.stringify(payload),
     };
-    return await fetch(baseURL + "checkout/", options).then(convertToJson);
+    const response = await fetch(baseURL + "checkout", options);
+    const data = await convertToJson(response);
+    return data.Result;
   }
 }

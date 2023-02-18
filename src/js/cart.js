@@ -12,11 +12,8 @@ if (cart.total > 0) {
 }
 
 function spinBackpack() {
-
     let spin = document.querySelector("svg");
-
     spin.setAttribute("animation", "rotate-right")
-
 }
 
 // function renderCartContents() {
