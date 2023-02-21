@@ -18,10 +18,4 @@ document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   myForm.reportValidity();
   if(chk_status) 
     myCheckout.checkout();
-
-  // clear the cart
-  setLocalStorage("so-cart", []);
-
-  // send the user to the success page
-
 });
