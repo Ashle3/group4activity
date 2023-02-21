@@ -11,11 +11,6 @@ if (cart.total > 0) {
   document.querySelector(".list-footer").classList.remove("hide");
 }
 
-function spinBackpack() {
-    let spin = document.querySelector("svg");
-    spin.setAttribute("animation", "rotate-right")
-}
-
 // function renderCartContents() {
 //   const cartItems = [getLocalStorage("so-cart")];
 //   const htmlItems = cartItems.map((item) => cartItemTemplate(item));

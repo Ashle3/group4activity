@@ -27,21 +27,32 @@ export default class ProductDetails{
 
     async init() {
         this.product = await this.dataSource.findProductById(this.productId);
+        this.product["qty"] = 1;
         this.renderProductDetails("main");
         document
             .getElementById("addToCart")
             .addEventListener("click", this.addToCart.bind(this));
         document
             .getElementById("addToCart")
-            .addEventListener("click", function(){ani()}, false);
+            .addEventListener("click", ani.bind(this));
     }
     addToCart(){
+        let isCopy = false;
         let cartArray = getLocalStorage("so-cart");
-
         if(!cartArray) {{
             cartArray = [];
         }}
-        cartArray.push(this.product);
+        // look for duplicates and adjust quantity and final price accordingly
+        for(var i = 0; i < cartArray.length; i++) {
+            if(cartArray[i].Id == this.product.Id) {
+                cartArray[i].qty += 1;
+                cartArray[i].FinalPrice = cartArray[i].qty * cartArray[i].ListPrice;
+                isCopy = true;
+            }
+        }
+        if(!isCopy) {
+            cartArray.push(this.product);
+        }
         setLocalStorage("so-cart", cartArray);
     }
     renderProductDetails(selector){
