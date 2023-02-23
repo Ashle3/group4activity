@@ -1,6 +1,6 @@
 const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
-function convertToJson(res) {
-  const jsonResponse = res.json();
+async function convertToJson(res) {
+  const jsonResponse = await res.json();
   if (res.ok) {
     return jsonResponse;
   } else {

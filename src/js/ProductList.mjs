@@ -1,5 +1,3 @@
-
-
 import { renderListWithTemplate } from "./utils.mjs";
 
 
